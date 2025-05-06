@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha a Criptomoeda</title>
+    <link rel="stylesheet" href="cripto.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Analise uma criptomoeda abaixo</h1>
+        <p>Selecione uma das opções abaixo para ver mais detalhes sobre ela.</p>
+        <form>
+            <div class="form-group">
+                <select id="cryptoSelect">
+                    <option value="">Selecione uma Criptomoeda</option>
+                    <option value="bitcoin">Bitcoin</option>
+                    <option value="solana">Solana</option>
+                    <option value="ethereum">Ethereum</option>
+                    <option value="cardano">Cardano</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="button" id="analyzeBtn">Analisar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('analyzeBtn').addEventListener('click', function() {
+            var selectedCrypto = document.getElementById('cryptoSelect').value;
+            
+            if (selectedCrypto) {
+                window.location.href = selectedCrypto + '.html';
+            } else {
+                alert('Por favor, selecione uma criptomoeda!');
+            }
+        });
+    </script>
+</body>
+</html>

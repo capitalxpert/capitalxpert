@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cdi.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Investimento CDI</h1>
+        <form id="formInvestimento">
+            <label for="valorInicial">Valor Inicial (R$):</label>
+            <input type="number" id="valorInicial" placeholder="Ex: 1000" required>
+
+            <label for="taxa">Taxa do CDB (% do CDI):</label>
+            <input type="number" id="taxa" placeholder="Ex: 120" required>
+
+            <label for="taxaCdi">CDI Anual (%):</label>
+            <input type="number" id="taxaCdi" value="13.65" required>
+
+            <label for="periodo">Período (em meses):</label>
+            <input type="number" id="periodo" placeholder="Ex: 24" required>
+
+            <label for="reinvestir">Reinvestir Juros?</label>
+            <select id="reinvestir">
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select>
+
+            <button type="button" id="calcular">Calcular</button>
+        </form>
+
+        <div id="resumo"></div>
+        <div id="resultado"></div>
+    </div>
+    <script src="cdi.js"></script>
+</body>
+</html>

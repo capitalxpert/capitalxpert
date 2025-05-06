@@ -1,0 +1,905 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="src/styles/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=mail" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
+    <title>CapitalXpert</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('header.css');
+@import url('home.css');
+@import url('menu.css');
+@import url('importancia.css');
+@import url('footer.css');
+
+:root {
+    --color-primary-1: #010525;
+    --color-primary-2: #000f31;
+    --color-primary-3: #f8d477;
+    --color-primary-4: #ffe100;
+    --color-primary-5: #ffe8b4;
+    --color-primary-6: #ff6200;
+    --color-neutral-0: #e9a209;
+    --color-neutral-1: #ffffff;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-primary-1);
+}
+
+section {
+    padding: 28px 8%;
+}
+
+.btn-default {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #ff6200;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+.btn-default:hover{
+    background-color: #e55b00;
+}
+.social-media-buttons {
+    display: flex;
+    gap: 18px;
+}
+
+.social-media-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 40px;
+    background-color: var(--color-neutral-0);
+    font-size: 1.25rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--color-neutral-1);;
+    box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow .3s ease;
+}
+
+.social-media-buttons a:hover {
+    box-shadow: 2x 2px 12px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    color: var(--color-primary-6);
+    font-size: 1.563rem;
+}
+
+.section-subtitle {
+    font-size: 2.1875rem;
+} 
+footer {
+    background-color: #fffaf7; /* Muda a cor de fundo do footer para branco */
+    position: relative; /* Para permitir que a imagem fique fora do footer */
+    padding: 20px 0; /* Aumenta o padding para tornar o footer maior */
+    z-index: 1; /* Para garantir que o footer fique acima da imagem */
+}
+
+footer img {
+    position: absolute; /* Para posicionar a imagem fora do footer */
+    bottom: 80%; /* Coloca a imagem a 80% da altura do footer */
+    left: 0;
+    width: 100%; /* Para que a imagem ocupe toda a largura */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-bottom: 20px; /* Adiciona espaço entre o footer e a imagem */
+}
+
+#footer_items {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 8% 24px 8%;
+    align-items: center;
+}
+
+#copyright {
+    color: var(--color-neutral-1);;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 600px) {
+    #footer_items {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+header {
+    width: 100%;
+    padding: 28px 8%;
+    position: sticky;
+    top: 0;
+    background-color: var(--color-primary-1);
+    z-index: 3;
+}
+
+#navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#nav_logo {
+    font-size: 17px;
+    color: var(--color-primary-6);
+}
+
+#nav_list {
+    display: flex;
+    list-style: none;
+    gap: 48px;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.nav-item.active a {
+    color: var(--color-neutral-1);
+    border-bottom: 3px solid var(--color-primary-4);
+}
+
+#mobile_btn {
+    display: none;
+}
+
+#mobile_menu {
+    display: none;
+}
+
+@media screen and (max-width: 1170px) {
+    #nav_list,
+    #navbar .btn-default {
+        display: none;
+    }
+
+    #mobile_btn {
+        display: block;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    #mobile_menu.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #mobile_nav_list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 12px 0px;
+    }
+
+    #mobile_nav_list .nav-item {
+        list-style: none;
+        text-align: center;
+    } 
+}
+#home {
+    display: flex;
+    min-height: calc(100vh - 91px);
+    position: relative;
+}
+
+#cta {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 5%;
+}
+
+#cta .title {
+    font-size: 2.5rem;
+    color: var(--color-neutral-1);;
+}
+
+#cta .title span {
+    color: var(--color-primary-6);
+}
+
+#cta .description {
+    font-size: 1.2rem;
+}
+
+#banner {
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    width: 70%;
+    z-index: 2;
+}
+
+#banner img {
+    height: 100%;
+    width: fit-content;
+}
+
+.shape {
+    background-color: var(--color-primary-2);
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    border-radius: 40% 30% 0% 20%;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+@media screen and (max-width: 1170px) {
+    #home {
+        min-height: 100%;
+        padding-top: 0px;
+    }
+
+    #banner,
+    #banner img,
+    #home .shape {
+        display: none;
+    }
+
+    #cta {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#investimento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.investiment {
+    background-color: #000f31;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 16px;
+    gap: 20px;
+    padding: 10px;
+    box-shadow: 0px 0px 12px 4px rgba(150, 2, 143, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+
+#dishes {
+    color:  #000f31;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 80px;
+    margin-top: 32px;
+}
+
+.dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 17px;
+    gap: none;
+    width: 100%;
+    padding: none;
+    background-color: var(--color-neutral-0);
+    box-shadow: 0px 0px 12px 4px rgba(150, 2, 143, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.dish-heart {
+    position: absolute;
+    background-color: var(--color-primary-6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.563rem;
+    color: var(--color-primary-1);
+    width: 70px;
+    height: 70px;
+    right: -10px;
+    top: -10px;
+    border-radius: 0px 37.5px 0px 42.5px;
+}
+
+.dish-description {
+    color: #434343;
+    text-align: center;
+}
+
+.dish-price {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+@media screen and (max-width: 1170px) {
+    #dishes {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .dish {
+        width: calc(50% - 12px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .dish {
+        width: 100%;
+    }
+
+    #menu .section-subtitle {
+        text-align: center;
+    }
+} 
+.dish-image {
+    width: 350px;
+    height: 230px;
+    object-fit: cover; /* Isso garante que a imagem mantenha a proporção e preencha o espaço */
+    
+    
+}
+
+.dish-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 17px;
+    gap: 18px;
+    width: 270px; /* Define uma largura fixa */
+    padding: 20px;
+    background-color:#F7E7CE;
+    box-shadow: 0px 0px 12px 4px rgba(150, 2, 143, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+
+#importancia {
+    background-color: #ffffff;
+    min-height: calc(100vh - 91px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
+
+#testimonial_chef {
+    width: 500px;
+    height: auto;
+}
+
+#importancia .section-subtitle {
+    font-size: 3rem;
+}
+
+#importancia_content {
+    width: 50%;
+}
+
+#feedbacks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
+.feedback {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--color-neutral-0);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.feedback-content p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.feedback-content p span {
+    color: var(--color-primary-6);
+}
+
+@media screen and (max-width: 1170px) {
+    #importancia {
+        flex-direction: column;
+    }
+
+    #importancia .section-subtitle {
+        text-align: center;
+        font-size: 2.5rem;
+    }
+
+    #testimonial_chef {
+        display: none;
+    }
+
+    #importancia_content {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #importancia .section-subtitle {
+        font-size: 2rem;
+    }
+
+    #importancia_content {
+        width: 100%;
+    }
+
+    .feedback {
+        flex-direction: column;
+    }
+} 
+.dropdown {
+    position: relative; /* Para posicionar o conteúdo do dropdown */
+    display: inline-block; /* Para que o dropdown funcione corretamente */
+}
+
+.btn-default2 {
+    background-color: #ff6200; /* Cor do botão */
+    color: white; /* Cor do texto */
+    border: none;
+    padding: 10px 10px;
+    border-radius: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.container-buttons {
+    display: flex;
+    align-items: center;
+    gap: 23px; /* Ajuste o valor para controlar a distância entre os botões */
+}
+
+.btn-default2:hover {
+    background-color: #e55b00; /* Cor ao passar o mouse */
+}
+
+.dropdown-content {
+    display: none; /* Inicialmente escondido */
+    position: absolute; /* Para posicionar em relação ao botão */
+    background-color: transparent; /* Remove o fundo */
+    z-index: 1; /* Para garantir que fique acima de outros elementos */
+    margin-top: 5px; /* Espaço entre o botão e o dropdown */
+}
+
+.btn-option {
+    background-color: #ff6200; 
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    padding: 10px 15px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro */
+    width: 100%; /* Para que os botões ocupem toda a largura */
+    text-align: left; /* Alinhamento do texto */
+    transition: background-color 0.3s; /* Transição suave */
+    margin-bottom: 5px; /* Espaçamento entre os botões */
+}
+
+.btn-option:last-child {
+    margin-bottom: 0; /* Remove o espaçamento do último botão */
+}
+
+.btn-option:hover {
+    background-color: #e55b00; /* Cor ao passar o mouse */
+    color: black;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <i class="fa-solid fa-hand-holding-dollar" id="nav_logo">capitalxpert</i>
+
+            <ul id="nav_list">
+                <li class="nav-item active">
+                    <a href="#home">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#menu">Nosso diferencial</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#importancia">Por que investir?</a>
+                </li>
+            </ul>
+
+            <div class="container-buttons">
+                <a href="eusou.html">
+                    <button class="btn-default2">Abra sua conta</button>
+                    <a>
+                        <div class="dropdown">
+                            <button style="background-color: #010525;" class="btn-default2" id="toggleDropdown">Entrar <i style="color:#e9a209;" class="fa-solid fa-arrow-right-to-bracket"></i></button>
+                        </div>
+                    </a>
+                    
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="login2.html"><button class="btn-option">Empresarial</button></a>
+                        <br> <br>
+                        <a href="login.html"> <button class="btn-option">Pessoal</button> </a>
+                    </div>
+                    </div>                    
+            
+
+            <button style="color: white;" id="mobile_btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+
+        <div id="mobile_menu">
+            <ul id="mobile_nav_list">
+                <li class="nav-item">
+                    <a href="#home">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#menu">Nosso diferencial</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#importancia">Avaliações</a>
+                </li>
+            </ul>
+
+        </div>
+    </header>
+
+    <main id="content">
+        <section id="home">
+            <div class="shape"></div>
+            <div id="cta">
+                <h1 class="title">
+                    Investir com estratégia, prosperar com 
+                    <span>resultados</span>
+                </h1>
+
+                <p style="color: white;" class="description">
+                    Somos uma plataforma dedicada a oferecer soluções inteligentes e seguras
+                    para investidores que buscam maximizar seus ganhos e alcançar seus objetivos financeiros.
+                    oferecemos recursos como cursos, planilhas, simulações, entre outros.
+                </p>
+
+                
+                
+            </div>
+
+            <div id="banner">
+                <img style="border-radius: 32px; height: 560px; width: 591px;" src="fotoinicio.jpg" alt="">
+            </div>
+        </section>
+        <br> <br> <br>
+        <section id="menu">
+            <h2 style="font-size: 35px;" id="diferencialt" class="section-title">Nosso diferencial</h2>
+            <br> 
+            <div id="dishes">
+                <div class="dish">
+                    <div class="">
+                    </div>
+
+                    <img src="logosemnome.png" class="dish-image" alt="">
+                    <br>
+                    <h3 class="dish-title">
+                        Cursos
+                    </h3>
+
+                    <span class="dish-description">
+                        Um curso completo para quem deseja aprender
+                         a investir com segurança e estratégia. Ele cobre desde conceitos básicos até técnicas avançadas, proporcionando conhecimento
+                          para tomar decisões financeiras inteligentes.
+                    </span>
+
+                    
+                </div>
+
+                <div class="dish">
+                    <div class="">
+                    </div>
+
+                    <img src="simulação.jpg" class="dish-image" alt="">
+                    <br>
+
+                    <h3 class="dish-title">
+                       Simulação completa
+                    </h3>
+
+                    <span class="dish-description">
+                        Permite que os usuários testem suas estratégias de investimento em um ambiente seguro, 
+                        sem riscos reais. Isso ajuda a entender o funcionamento do mercado e aprimorar as decisões antes de investir de verdade.
+                    </span>
+
+              
+                    
+                </div>
+
+                <div class="dish">
+                    <div class="">
+                    </div>
+
+                    <img src="planilha.jpg" class="dish-image" alt="">
+                    <br>
+
+                    <h3 class="dish-title">
+                        Planilhas
+                    </h3>
+
+                    <span class="dish-description">
+                        Ferramentas essenciais para organização financeira. As planilhas ajudam a monitorar investimentos, lucros e despesas, enquanto as metas
+                         financeiras auxiliam no planejamento de curto, médio e longo prazo, garantindo um crescimento sustentável do patrimônio.
+                    </span>
+
+                 
+
+                
+                </div>
+
+                <div class="dish">
+                    <div class="">
+                    </div>
+
+                    <img src="metas.jpg" class="dish-image" alt="">
+                    <br>
+
+                    <h3 class="dish-title">
+                        Metas
+                    </h3>
+
+                    <span class="dish-description">
+                        Definir objetivos claros é essencial para alcançar bons resultados nos investimentos. Com um planejamento bem estruturado,
+                         os investidores podem acompanhar seu progresso e ajustar suas estratégias para atingir seus objetivos financeiros.
+                    </span>
+
+                  
+                </div>
+            </div>
+        </section>
+
+        <section id="importancia">
+            <h2 style="font-size: 35px; text-align: center;" id="diferencialt" class="section-title">Importância em saber investir</h2>
+
+            <div id="dishes">
+                <div class="dish-1">
+                    <div class="">
+                    </div>
+
+                    <h3 style="text-align: center;" class="dish-title1">  <i style="color:#ff6200;"  class="fa-solid fa-lock"></i>
+                        Proteção contra a Inflação
+                    </h3>
+
+                    <span class="dish-description">
+                        Quando você deixa seu dinheiro parado na poupança ou embaixo do colchão, ele perde valor com o tempo devido à inflação.
+                         Investir permite que seu dinheiro trabalhe para você, gerando retornos que podem superar a inflação e aumentar seu patrimônio.
+                          Com o tempo, isso cria um efeito de crescimento exponencial, graças aos juros compostos.
+                    </span>
+                </div>
+
+                <div class="dish-1">
+                    <div class="">
+                    </div>
+
+                    <h3 style="text-align: center;" class="dish-title1"> <i style="color:#ff6200;" class="fa-solid fa-money-bill-trend-up"></i>
+                        Independência no Futuro
+                    </h3>
+
+                    <span class="dish-description">
+                        Investir garante mais segurança financeira, reduzindo a dependência de salário ou aposentadoria pública. Com um portfólio diversificado,
+                         é possível gerar renda passiva e enfrentar crises com mais tranquilidade. 
+                        Além disso, investimentos inteligentes ajudam a alcançar grandes objetivos, como a compra de uma casa, educação dos filhos e uma aposentadoria 
+                        estável.
+                    </span>                    
+                </div>
+
+                
+                <div class="dish-1">
+                    <div class="">
+                    </div>
+
+
+                    <h3 style="text-align: center;" class="dish-title1"> <i style="color:#ff6200;"  class="fa-solid fa-hand-holding-dollar"></i>
+                        Controle sobre o Dinheiro
+                    </h3>
+
+                    <span class="dish-description">
+                        Em vez de depender apenas do trabalho ativo ou de deixar o dinheiro parado, investir permite que você tenha mais
+                        autonomia sobre suas finanças e planeje seu futuro de forma mais eficiente. Além disso, o conhecimento sobre investimentos
+                        ajuda a evitar golpes e decisões ruins, garantindo que seu dinheiro seja aplicado de maneira inteligente e alinhada
+                        com seus objetivos.
+                    </span>
+
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+    <br><br>
+  
+    <section id="investimento">
+        <h2 style="font-size: 35px;" id="diferencialt" class="section-title">Investimento</h2>
+        <br> 
+        <div id="dishes">
+            <div class="investiment">
+                <div class="">
+                </div>
+
+                <img style="border-radius: 36px;" src="investiment.jpg" class="dish-image" alt="">
+
+                <h3 class="dish-title">
+                    Investimentos
+                </h3>
+
+                <span style="color: #ffffff;" class="dish-description" >
+                 Conteúdo completo de recursos que atendem <br> aos mais diversos perfis e objetivos.
+                    <br><br><br>
+                <a href="investimento.html">Conheça nossos investimentos <i class="fa-solid fa-arrow-right"></i></a>
+            
+             
+
+                
+            </div>
+    </section>
+
+
+    <footer>
+        <img src="wave.svg" alt=""> 
+        <div id="footer_items">
+            <span style="color: black;" id="copyright">
+                &copy 2025 CapitalXpert
+            </span>
+            <div class="social-media-buttons">
+                <p>Nossas redes sociais</p>
+                <a href="">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+    
+                <a href="">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+    
+                <a href="">
+                    <span class="material-symbols-outlined">
+                        mail
+                        </span>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(function() {
+    $('#toggleDropdown').on('click', function() {
+        $('#dropdownContent').toggle(); 
+    });
+
+    // Fecha o dropdown se clicar fora dele
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.dropdown').length) {
+            $('#dropdownContent').hide(); 
+        }
+    });
+});
+$(document).ready(function() {
+    $('#mobile_btn').on('click', function () {
+        $('#mobile_menu').toggleClass('active');
+        $('#mobile_btn').find('i').toggleClass('fa-x');
+    });
+
+    const sections = $('section');
+    const navItems = $('.nav-item');
+
+    $(window).on('scroll', function () {
+        const header = $('header');
+        const scrollPosition = $(window).scrollTop() - header.outerHeight();
+
+        let activeSectionIndex = 0;
+
+        if (scrollPosition <= 0) {
+            header.css('box-shadow', 'none');
+        } else {
+            header.css('box-shadow', '5px 1px 5px rgba(0, 0, 0, 0.1');
+        }
+
+        sections.each(function(i) {
+            const section = $(this);
+            const sectionTop = section.offset().top - 96;
+            const sectionBottom = sectionTop+ section.outerHeight();
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                activeSectionIndex = i;
+                return false;
+            }
+        })
+
+        navItems.removeClass('active');
+        $(navItems[activeSectionIndex]).addClass('active');
+    });
+
+    ScrollReveal().reveal('#cta', {
+        origin: 'left',
+        duration: 2000,
+        distance: '20%'
+    });
+
+    ScrollReveal().reveal('.dish', {
+        origin: 'left',
+        duration: 2000,
+        distance: '20%'
+    });
+
+    ScrollReveal().reveal('#testimonial_chef', {
+        origin: 'left',
+        duration: 1000,
+        distance: '20%'
+    })
+
+    ScrollReveal().reveal('.feedback', {
+        origin: 'right',
+        duration: 1000,
+        distance: '20%'
+    })
+});
+    </script>
+</body>
+</html>

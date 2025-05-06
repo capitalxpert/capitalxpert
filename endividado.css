@@ -1,0 +1,161 @@
+:root {
+    --color-background: #000631;
+    --color-primary: #ff6200;
+    --color-secondary: #010525;
+    --color-text: #ffffff;
+    --color-light: #fff;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: var(--color-secondary);
+    padding: 15px 10%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: var(--color-light);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--color-light);
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: var(--color-primary);
+    color: #ffffff; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background-color 0.7s ease;
+}
+
+.btn-sair {
+    background-color: var(--color-primary);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.btn-sair:hover {
+    background-color: #e55400;
+}
+
+/* Conteúdo */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 100px auto 0;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Seções */
+.secao {
+    background-color: #010525;
+    padding: 20 px;
+    border-radius: 24px;
+    margin-bottom: 60px;
+    box-shadow: 0px 0px 12px 4px rgb(255, 119, 0);
+    text-align: center;
+}
+.secao2 {
+    background-color: #010525;
+    padding: 20px;
+    border-radius: 24px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.secao h2 {
+    color: var(--color-primary);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.secao p {
+    font-size: 16px;
+    color: var(--color-text);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .container {
+        margin-top: 140px;
+    }
+}

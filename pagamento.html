@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="pagamento.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Pagamento</h2>
+        <form id="pagamentoForm" action="processa_pagamento.php" method="POST">
+            <label for="email">Email da Conta para Liberação:</label>
+            <input type="email" name="email" id="email" required>
+
+            <div>
+                <label>Clique em um método de pagamento:</label>
+                <div class="method-container">
+                    <input type="radio" id="pix" name="metodo" value="pix">
+                      <label for="pix" class="method-btn">
+                    <i class="fa-brands fa-pix"></i> Pix
+                        </label>
+
+                
+                        <input type="radio" id="cartao" name="metodo" value="cartao">
+                        <label for="cartao" class="method-btn">
+                            <i class="fa-solid fa-credit-card"></i> Cartão
+                        </label>
+                        
+                </div>
+                
+            <div id="cartaoFields" style="display: none;">
+                <label for="numcartao">Número do Cartão:</label>
+                <input type="text" name="numcartao" id="numcartao" maxlength="16" placeholder="Digite o número do cartão">
+
+                <label for="tipoCartao">Tipo de Cartão:</label>
+                <select name="tipoCartao" id="tipoCartao">
+                    <option value="credito">Crédito</option>
+                    <option value="debito">Débito</option>
+                </select>
+            </div>
+
+            <label for="valor">Valor:</label>
+            <input type="text" name="valor" id="valor" value="20" readonly required>
+
+            <button type="submit" id="finalizarBtn" disabled>Finalizar Pagamento</button>
+        </form>
+    </div>
+
+    <script src="pagamento.js"></script>
+</body>
+</html>

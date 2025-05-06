@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="cadpff.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> 
+</head>
+<body>      
+    <div class="container">     
+        <p class="form-title">CADASTRO <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo">
+        </div></p>
+        <form id="registration-form" method="POST" action="incluirPessoa.php">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="confirm-email">Confirme o Email</label>
+                <input type="email" name="confirm-email" id="confirm-email" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" name="cpf" id="cpf" required autocomplete="off" maxlength="14" oninput="formatarCPF(this)">
+                <span id="cpf-error" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" name="telefone" id="telefone" required autocomplete="off" maxlength="15" oninput="formatarTelefone(this)">
+                <span id="telefone-error" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP</label>
+                <input type="text" name="cep" id="cep" required autocomplete="off" maxlength="9" oninput="formatarCEP(this)">
+            </div>
+            <div class="form-group">
+                <label for="cidade">Cidade</label>
+                <input type="text" name="cidade" id="cidade" required autocomplete="off" readonly>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <input type="text" name="estado" id="estado" required autocomplete="off" readonly>
+            </div>
+            <div class="form-group">
+                <label for="bairro">Bairro</label>
+                <input type="text" name="bairro" id="bairro" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="ruanumero">Rua e Número</label>
+                <input type="text" name="ruanumero" id="ruanumero" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <div class="password-container">
+                    <input type="password" name="senha" id="password" required>
+                    <button type="button" class="toggle-password" onclick="togglePassword('password', 'lock-icon1')">
+                        <i id="lock-icon1" class="fas fa-lock"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirme a Senha</label>
+                <div class="password-container">
+                    <input type="password" name="confirm-senha" id="confirm-password" required>
+                    <button type="button" class="toggle-password" onclick="togglePassword('confirm-password', 'lock-icon2')">
+                        <i id="lock-icon2" class="fas fa-lock"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group" style="grid-column: span 3;">
+                <button type="submit" name="Cadastrar" class="submit-button">Cadastrar</button>
+            </div>
+            <div class="form-group" style="grid-column: span 3;">
+                <p style="color: gray;">Já possui uma conta? <a href="login.html" class="enter-button">Entrar</a></p>
+            </div>
+            <div id="error-message" class="error-message" style="grid-column: span 3;"></div>
+        </form>
+    </div>
+
+    <script>
+         document.getElementById("registration-form").addEventListener("submit", function (event) {
+        let senha = document.getElementById("password").value;
+        let confirmSenha = document.getElementById("confirm-password").value;
+        let email = document.getElementById("email").value;
+        let confirmEmail = document.getElementById("confirm-email").value;
+        let cpf = document.getElementById("cpf").value;
+        let errorMessage = document.getElementById("error-message");
+
+        errorMessage.innerHTML = ""; // Limpa mensagens anteriores
+
+        // Validar se os e-mails coincidem
+        if (email !== confirmEmail) {
+            errorMessage.innerHTML = "⚠️ Os e-mails não coincidem.";
+            event.preventDefault();
+            return;
+        }
+
+        // Validar se as senhas coincidem
+        if (senha !== confirmSenha) {
+            errorMessage.innerHTML = "⚠️ As senhas não coincidem.";
+            event.preventDefault();
+            return;
+        }
+
+        // Validar CPF
+        if (!validarCPF(cpf)) {
+            errorMessage.innerHTML = "⚠️ CPF inválido.";
+            event.preventDefault();
+            return;
+        }
+    });
+
+    // Função para validar CPF
+    function validarCPF(cpf) {
+        cpf = cpf.replace(/\D/g, ""); // Remove caracteres não numéricos
+
+        if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false; // Verifica se todos os números são iguais (ex: 000.000.000-00)
+
+        let soma = 0, resto;
+
+        for (let i = 1; i <= 9; i++) soma += parseInt(cpf[i - 1]) * (11 - i);
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+        if (resto !== parseInt(cpf[9])) return false;
+
+        soma = 0;
+        for (let i = 1; i <= 10; i++) soma += parseInt(cpf[i - 1]) * (12 - i);
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+        if (resto !== parseInt(cpf[10])) return false;
+
+        return true;
+    }
+        function togglePassword(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            
+            input.type = input.type === 'password' ? 'text' : 'password';
+
+            if (input.type === 'password') {
+                icon.classList.remove('fa-unlock');
+                icon.classList.add('fa-lock');
+            } else {
+                icon.classList.remove('fa-lock');
+                icon.classList.add('fa-unlock');
+            }
+        }
+
+        document.getElementById("cep").addEventListener("input", function () {
+        let value = this.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+        if (value.length > 8) value = value.slice(0, 8); // Limita a 8 dígitos
+        
+        // Aplica a formatação XXXXX-XXX
+        if (value.length >= 5) {
+            value = value.replace(/(\d{5})(\d)/, "$1-$2");
+        }
+        this.value = value;
+
+        // Busca o endereço automaticamente quando o CEP estiver completo
+        if (value.length === 9) {
+            let cep = value.replace("-", ""); // Remove o hífen para a busca
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        document.getElementById("cidade").value = data.localidade;
+                        document.getElementById("estado").value = data.uf;
+                    } else {
+                        alert("CEP inválido. Digite um CEP válido.");
+                        document.getElementById("cidade").value = "";
+                        document.getElementById("estado").value = "";
+                    }
+                })
+                .catch(error => console.error("Erro ao buscar CEP:", error));
+        }
+    });
+
+    // Formatar CPF no formato XXX.XXX.XXX-XX
+    function formatarCPF(input) {
+        let value = input.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+        if (value.length > 11) value = value.slice(0, 11); // Limita a 11 dígitos
+
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+        input.value = value;
+    }
+
+    // Formatar telefone no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX
+    function formatarTelefone(input) {
+        let value = input.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+        if (value.length > 11) value = value.slice(0, 11); // Limita a 11 dígitos
+
+        if (value.length <= 10) {
+            value = value.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+        } else {
+            value = value.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+        }
+
+        input.value = value;
+    }
+    </script>
+</body>
+</html>

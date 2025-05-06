@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: #010525;
+    color: #eaeaea;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background:#000f31;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 50px rgba(255, 137, 2, 0.8);
+    width: 600px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #ff6200;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+p {
+    color: #dcdcdc;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+button {
+    padding: 10px;
+    background: #ff6200;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #e6a844, #cf8b25);
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#resultado {
+    margin-top: 25px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    background: rgba(45, 45, 65, 0.9);
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    form {
+        gap: 15px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}

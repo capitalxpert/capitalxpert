@@ -1,0 +1,293 @@
+    :root {
+        --color-primary-1: #010525;
+        --color-primary-2: #000f31;
+        --color-primary-3: #ff6200;
+        --color-primary-4: #ff6200;
+        --color-primary-5: #ffe8b4;
+        --color-primary-6: #ff6200;
+        --color-neutral-0: #e9a209;
+        --color-neutral-1: #ffffff;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .barra-lateral {
+        width: 270px; 
+        background-color: var(--color-primary-2);
+        color: gray;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: 20px;
+        overflow: auto;
+        border-right: 3px solid var(--color-primary-4); 
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .barra-lateral .logo {
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--color-primary-4);
+        transition: color 0.3s ease;
+    }
+
+    .barra-lateral .logo i {
+        margin-right: 10px;
+    }
+
+    .barra-lateral ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .barra-lateral ul li {
+        padding: 12px 25px;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.3s ease, padding-left 0.3s ease;
+        border-radius: 48px; 
+        cursor: pointer;
+    }
+
+    .barra-lateral ul li a {
+        color: gray;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .barra-lateral ul li a:hover {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .barra-lateral ul li i {
+        margin-right: 7px;
+        font-size: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .barra-lateral ul li .texto {
+        display: none; 
+        opacity: 0;
+        color: white;
+        transition: opacity 0.3s ease;
+    }
+
+    .barra-lateral ul li:hover .texto {
+        display: inline;
+        opacity: 1;
+        color: white;
+    }
+
+    .barra-lateral ul li:hover {
+        padding-left: 20px; 
+        color: white;
+    }
+
+    .barra-lateral .dropdown .submenu {
+        display: none;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+
+    .barra-lateral .dropdown .submenu li {
+        padding: 10px 0;
+    }
+
+    .barra-lateral .submenu.show {
+        display: block;
+    }
+
+    .seta {
+        margin-left: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .seta.rotate {
+        transform: rotate(180deg);
+    }
+
+    .barra-lateral .dropdown-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .conteudo {
+        margin-left: 270px;
+        padding: 20px;
+        background-color: var(--color-primary-1);
+        color: var(--color-neutral-1);
+        transition: margin-left 0.3s ease;
+    }
+
+
+    .parte-superior {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+
+    .parte-superior .texto {
+        max-width: 60%;
+    }
+
+    .parte-superior h1 {
+        font-size: 36px;
+        margin: 10px 0;
+        color: var(--color-primary-4);
+    }
+
+    .parte-superior p {
+        font-size: 18px;
+    }
+
+    .parte-superior .imagem img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+
+    .secao {
+        background-color: var(--color-primary-5);
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .secao h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: var(--color-primary-1);
+    }
+
+    .secao p {
+        font-size: 16px;
+        color: var(--color-primary-1);
+    }
+
+    .btn-saiba-mais {
+        background-color: var(--color-primary-4);
+        color: var(--color-neutral-1);
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .btn-saiba-mais:hover {
+        background-color: var(--color-primary-6);
+    }
+
+    .btn {
+        background-color: #ff6200;
+        color: var(--color-neutral-1);
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: var(--color-primary-6);
+    }
+
+    @media (max-width: 768px) {
+        .barra-lateral {
+            width: 200px;
+        }
+        .parte-superior {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .submenu {
+        background-color: #ff6200;
+        border-radius: 12px;
+    }
+
+    .dropdown ul li:hover {
+        background-color: #010525;
+    }
+
+    .btn-sair {
+        background-color: #ff6200;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-sair:hover {
+        background-color: #e55400;
+    }
+
+    .btn-sair i {
+        margin-left: 10px;
+    }
+
+    .barra-lateral .plataforma {
+        padding: 5px 20px; 
+        transition: padding 0.3s ease;
+    }
+
+    .barra-lateral .plataforma.ativa {
+        margin-top: 20px;
+        background-color: #ff6200; 
+        border-radius: 10px;
+        color: white;
+    }
+
+    .barra-lateral .plataforma a {
+        color: gray;
+        transition: color 0.3s ease;
+    }
+
+    .barra-lateral .plataforma.ativa a {
+        color: white; 
+    }
+
+    ::-webkit-scrollbar {
+        width: 3px; 
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #010525; 
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #ff6200; 
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #e55400;
+    }

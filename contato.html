@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receber Melhorias</title>
+    <link rel="stylesheet" href="contato.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("iGMgmJNDgrLQ8c4sb"); 
+        })();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Envie suas Sugestões!</h1>
+            <p>Ajude-nos a melhorar. Envie suas ideias e sugestões usando o formulário abaixo:</p>
+        </header>
+
+        <form id="formSugestoes">
+            <div class="input-group">
+                <label for="email">Seu E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="mensagem">Sua Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Digite sua sugestão aqui..." required></textarea>
+            </div>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <footer>
+            <p>Obrigado por nos ajudar a melhorar!</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById("formSugestoes").addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const mensagem = document.getElementById("mensagem").value;
+
+            
+            const idServico = "service_9zdn126"; 
+            const idTemplate = "template_vwgv94h";
+
+            const parametros = {
+                email: email,
+                mensagem: mensagem
+            };
+
+            console.log("Parâmetros enviados:", parametros); 
+
+            emailjs.send(idServico, idTemplate, parametros)
+                .then(() => {
+                    alert("Sugestão enviada com sucesso! Obrigado por sua contribuição.");
+                    document.getElementById("formSugestoes").reset();
+                })
+                .catch(erro => {
+                    console.error("Erro ao enviar o e-mail:", erro);
+                    alert("Ocorreu um erro ao enviar sua sugestão. Tente novamente mais tarde.");
+                });
+        });
+    </script>
+</body>
+</html>

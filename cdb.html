@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Investimento em CDB</title>
+    <link rel="stylesheet" href="cdb.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simulação de Investimento em CDB</h1>
+        
+        <form id="investment-form">
+            <div class="input-group">
+                <label for="initial-investment">Valor Inicial:</label>
+                <input type="number" id="initial-investment" required>
+            </div>
+            <div class="input-group">
+                <label for="investment-period">Período (anos):</label>
+                <input type="number" id="investment-period" required>
+            </div>
+            <div class="input-group">
+                <label for="monthly-contribution">Contribuição Mensal (opcional):</label>
+                <input type="number" id="monthly-contribution" value="0">
+            </div>
+            <div class="input-group">
+                <label for="risk-level">Nível de Risco:</label>
+                <select id="risk-level">
+                    <option value="0.5">Baixo</option>
+                    <option value="1">Médio</option>
+                    <option value="1.5">Alto</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <button type="submit">Simular Investimento</button>
+            </div>
+        </form>
+
+        <div id="simulation-result">
+            <h2>Resultados</h2>
+            <p id="final-amount">Valor Final: R$ 0,00</p>
+            <p id="total-contributions">Total Contribuído: R$ 0,00</p>
+            <canvas id="investment-chart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="cdb.js"></script>
+</body>
+</html>

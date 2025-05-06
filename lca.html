@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lca.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Investimento LCA</h1>
+        <form id="formInvestimento">
+            <label for="valorInicial">Valor Inicial (R$):</label>
+            <input type="number" id="valorInicial" placeholder="Ex: 1000" required>
+
+            <label for="taxa">Taxa de Juros da LCA (% ao ano):</label>
+            <input type="number" id="taxa" placeholder="Ex: 120" required>
+
+            <label for="periodo">Período (em meses):</label>
+            <input type="number" id="periodo" placeholder="Ex: 24" required>
+
+            <label for="reinvestir">Reinvestir Juros?</label>
+            <select id="reinvestir">
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select>
+
+            <button type="button" id="calcular">Calcular</button>
+        </form>
+
+        <div id="resumo"></div>
+        <div id="resultado"></div>
+    </div>
+    <script>
+        document.getElementById('calcular').addEventListener('click', function() {
+    // Obtendo os valores dos campos
+    let valorInicial = parseFloat(document.getElementById('valorInicial').value);
+    let taxaAnual = parseFloat(document.getElementById('taxa').value);
+    let periodo = parseInt(document.getElementById('periodo').value);
+    let reinvestir = document.getElementById('reinvestir').value;
+
+    // Verificando se os valores são válidos
+    if (isNaN(valorInicial) || isNaN(taxaAnual) || isNaN(periodo)) {
+        alert("Por favor, preencha todos os campos corretamente.");
+        return;
+    }
+
+    // Calculando a taxa mensal
+    let taxaMensal = (taxaAnual / 12) / 100;
+
+    // Calculando o montante usando juros compostos
+    let montanteFinal;
+    if (reinvestir === 'sim') {
+        // Juros compostos com reinvestimento
+        montanteFinal = valorInicial * Math.pow(1 + taxaMensal, periodo);
+    } else {
+        // Juros simples, sem reinvestimento
+        montanteFinal = valorInicial * (1 + taxaMensal * periodo);
+    }
+
+    // Exibindo os resultados
+    document.getElementById('resultado').innerHTML = `
+        <p>Investimento Inicial: R$ ${valorInicial.toFixed(2)}</p>
+        <p>Taxa Anual: ${taxaAnual}%</p>
+        <p>Período: ${periodo} meses</p>
+        <p>Reinvestir Juros: ${reinvestir === 'sim' ? 'Sim' : 'Não'}</p>
+        <p><strong>Montante Final: R$ ${montanteFinal.toFixed(2)}</strong></p>
+    `;
+});
+
+    </script>
+</body>
+</html>

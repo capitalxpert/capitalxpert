@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metas de Investimento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0a1a29;
+            color: #fff;
+            display: flex;
+        }
+
+        /* Barra Lateral */
+        .barra-lateral {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100vh;
+            background-color: #000f31;
+            color: #ffffff;
+            padding: 20px 0;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+            border-right: 3px solid #000000;
+            transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            overflow-y: auto;
+        }
+
+        /* Barra lateral expandida no hover */
+        .barra-lateral:hover {
+            width: 350px;
+        }
+
+        /* Logo na barra lateral */
+        .barra-lateral .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .barra-lateral .logo i {
+            font-size: 50px;
+            margin-right: 10px;
+            color: #ff6200;
+        }
+
+        .barra-lateral .logo span {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ff6200;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .barra-lateral:hover .logo span {
+            opacity: 1;
+        }
+
+        .barra-lateral ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .barra-lateral ul li {
+            display: flex;
+            align-items: center;
+            margin: 20px 10px;
+            padding: 10px;
+            border-radius: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .barra-lateral ul li:hover {
+            background-color: #ff6200;
+            color: #fffcfc;
+            transform: translateX(10px);
+        }
+
+        .barra-lateral ul li i {
+            font-size: 20px;
+            margin: 0 15px;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        .barra-lateral ul li a {
+            color: inherit;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            flex-grow: 1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .barra-lateral:hover ul li a {
+            opacity: 1;
+        }
+
+        /* Estilos do conteúdo principal */
+        .conteudo {
+            margin-left: 120px; /* Espaço para a barra lateral */
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ff6200;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Estilo para o botão de adicionar metas */
+        .btn-adicionar {
+            font-size: 24px;
+            background-color: #ff6200;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-adicionar:hover {
+            background-color: #e46a1c;
+        }
+
+        /* Formulário que aparece ao clicar no botão */
+        .formulario {
+            display: none;
+            background-color: #2a3a50;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .formulario input, .formulario select, .formulario button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
+            border: 1px solid #333;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .formulario button {
+            background-color: #ff6200;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .formulario button:hover {
+            background-color: #e46a1c;
+        }
+
+        /* Lista de metas */
+        .metas-list {
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+            margin: 0 auto;
+        }
+
+        .meta-item {
+            background-color: #293441;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Lateral -->
+    <div class="barra-lateral">
+        <div class="logo">
+            <i class="fas fa-coins"></i>
+            <span>capitalXpert</span>
+        </div>
+        <ul>
+            <li><i class="fas fa-coins"></i><a href="#">Criptomoedas</a></li>
+            <li><i class="fas fa-dollar-sign"></i><a href="#">Moedas</a></li>
+            <li><i class="fas fa-chart-line"></i><a href="#">Selic</a></li>
+            <li><i class="fas fa-percent"></i><a href="#">CDI</a></li>
+            <li><i class="fas fa-balance-scale"></i><a href="#">Situações</a></li>
+            <li><i class="fas fa-table"></i><a href="#">Planilhas</a></li>
+            <li><i class="fas fa-address-book"></i><a href="#">Contatos</a></li>
+            <li><i class="fas fa-tasks"></i><a href="#">Metas</a></li>
+            <li><i class="fas fa-bell"></i><a href="#">Lembretes</a></li>
+            <li><i class="fas fa-chart-pie"></i><a href="#">Ações</a></li>
+            <li><i class="fas fa-book"></i><a href="#">Cursos</a></li>
+        </ul>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="conteudo">
+        <h1>Adicionar Metas</h1>
+
+        <!-- Botão para adicionar nova meta -->
+        <button class="btn-adicionar" id="btn-adicionar">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <!-- Formulário que aparece ao clicar no botão -->
+        <div class="formulario" id="formulario">
+            <label for="meta">Qual sua meta de investimento?</label>
+            <input type="text" id="meta" placeholder="Exemplo: Investir em Criptomoedas" required>
+
+            <label for="data-inicio">Data de Início</label>
+            <input type="date" id="data-inicio" required>
+
+            <label for="data-fim">Data de Término</label>
+            <input type="date" id="data-fim" required>
+
+            <button type="submit" id="btn-salvar">Adicionar Meta</button>
+        </div>
+
+        <!-- Lista de metas -->
+        <div class="metas-list" id="metas-list"></div>
+    </div>
+
+    <script>
+        // Mostrar formulário quando clicar no botão "+"
+        document.getElementById("btn-adicionar").addEventListener("click", function() {
+            document.getElementById("formulario").style.display = "block";
+        });
+
+        // Salvar nova meta
+        document.getElementById("btn-salvar").addEventListener("click", function() {
+            const meta = document.getElementById("meta").value;
+            const dataInicio = document.getElementById("data-inicio").value;
+            const dataFim = document.getElementById("data-fim").value;
+
+            // Criar novo item da meta
+            const novoItem = document.createElement("div");
+            novoItem.classList.add("meta-item");
+            novoItem.innerHTML = `<strong>${meta}</strong><br>Início: ${dataInicio} - Término: ${dataFim}`;
+
+            // Adicionar o novo item na lista de metas
+            document.getElementById("metas-list").appendChild(novoItem);
+
+            // Limpar campos do formulário e esconder
+            document.getElementById("meta").value = '';
+            document.getElementById("data-inicio").value = '';
+            document.getElementById("data-fim").value = '';
+            document.getElementById("formulario").style.display = "none";
+        });
+    </script>
+
+</body>
+</html>

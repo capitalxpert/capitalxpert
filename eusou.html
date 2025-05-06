@@ -1,0 +1,31 @@
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha o Tipo de Cadastro</title>
+    <link rel="stylesheet" href="eusou.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha seu Tipo de Cadastro</h1>
+        <p>Por favor, selecione se você é uma pessoa física ou empresa para prosseguir com o cadastro.</p>
+        <form>
+            <div class="form-group">
+                <button type="button" class="btn" id="pessoaFisica">Pessoa Física</button>
+                <button type="button" class="btn" id="empresa">Empresa</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('pessoaFisica').addEventListener('click', function() {
+            window.location.href = 'cadpf.html';
+        });
+
+        document.getElementById('empresa').addEventListener('click', function() {
+            window.location.href = 'cadpj.html';
+        });
+    </script>
+</body>
+</html>

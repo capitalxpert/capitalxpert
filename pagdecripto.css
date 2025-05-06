@@ -1,0 +1,432 @@
+            /* Resetando margens e preenchimentos */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Corpo da página */
+            body {
+                font-family: 'Roboto', sans-serif;
+                display: flex;
+                flex-direction: column;
+                background-color: #000f31;
+                color: #ff6200;
+                height: 100%;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            /* Barra Lateral */
+            .barra-lateral {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100px;
+                height: 100vh;
+                background-color: #000f31;
+                color: #ffffff;
+                padding: 20px 0;
+                box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+                border-right: 3px solid #000000;
+                transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                overflow-y: auto;
+            }
+
+            /* Barra lateral expandida no hover */
+            .barra-lateral:hover {
+                width: 350px;
+            }
+
+            /* Logo na barra lateral */
+            .barra-lateral .logo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            /* Icone do logo */
+            .barra-lateral .logo i {
+                font-size: 50px;
+                margin-right: 10px;
+                color: #ff6200;
+            }
+
+            /* Nome do logo, visível apenas no hover */
+            .barra-lateral .logo span {
+                font-size: 30px;
+                font-weight: bold;
+                color: #ff6200;
+                opacity: 0;
+                transition: opacity 0.4s;
+            }
+
+            /* Exibindo nome do logo no hover */
+            .barra-lateral:hover .logo span {
+                opacity: 1;
+            }
+
+            /* Estilo para a lista de links na barra lateral */
+            .barra-lateral ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            /* Estilo para os itens da barra lateral */
+            .barra-lateral ul li {
+                display: flex;
+                align-items: center;
+                margin: 20px 10px;
+                padding: 10px;
+                border-radius: 20px;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+
+            /* Efeito de hover para os itens da barra lateral */
+            .barra-lateral ul li:hover {
+                background-color: #ff6200;
+                color: #fffcfc;
+                transform: translateX(10px);
+            }
+
+            /* Icones dos links na barra lateral */
+            .barra-lateral ul li i {
+                font-size: 20px;
+                margin: 0 15px;
+                color: inherit;
+                transition: color 0.3s;
+            }
+
+            /* Estilo para os links da barra lateral */
+            .barra-lateral ul li a {
+                color: inherit;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: bold;
+                flex-grow: 1;
+                opacity: 0;
+                transition: opacity 0.4s;
+            }
+
+            /* Exibindo o texto do link na barra lateral ao passar o hover */
+            .barra-lateral:hover ul li a {
+                opacity: 1;
+            }
+
+            /* Parte superior da página */
+            .parte-superior {
+                background-color: #000f31;
+                color: #ff6200;
+                padding: 80px 50px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+                margin-left: 120px;
+            }
+
+            /* Estilo para o texto da parte superior */
+            .parte-superior .texto {
+                width: 55%;
+                margin-left: 20px;
+                animation: slideInRight 1.5s ease-out;
+            }
+
+            /* Título da parte superior */
+            .parte-superior .texto h1 {
+            font-size: 36px;
+                font-weight: bold;
+                color: #ffffff;
+                margin-bottom: 20px; 
+            }
+
+            /* Descrição na parte superior */
+            .parte-superior .texto p {
+                font-size: 18px;
+                color: #ebe6e1;
+                line-height: 1.6;
+            }
+
+            /* Imagem na parte superior */
+            .parte-superior .imagem img {
+                width: 100%;
+                max-width: 450px;
+                height: auto;
+                border-radius: 10px;
+                animation: fadeIn 1.5s ease-out;
+            }
+
+            /* Parte inferior da página */
+            .parte-inferior {
+                background-color: #010525;
+                color: #050708;
+                display: flex;
+                padding: 100px 20px;
+                align-items: center;
+                min-height: 70vh;
+                min-width: 110vh;
+            }
+
+            /* Cabeçalho de benefícios */
+            .cabecalho-beneficios {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: center;
+                margin-left: 100px;
+            }
+
+            /* Título da parte inferior */
+            .parte-inferior h1 {
+                font-size: 45px;
+                margin-left: 5px;
+                font-weight: bold;
+                color: #ff6200;
+                margin-bottom: 20px;
+            }
+
+            /* Descrição na parte inferior */
+            .parte-inferior p {
+                font-size: 18px;
+                color: #000000;
+                margin-left: 120px;
+            }
+
+
+
+            /* Título da seção Moedas */
+            .secao-moedas h2 {
+                font-size: 28px;
+                color: #ff6200;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .secao-moedas {
+                background-color: #010525;
+                padding: 40px 50px;
+                margin-top: 30px;
+                border-radius: 10px;
+            }
+            
+            .secao-moedas h2 {
+                font-size: 28px;
+                color: #ff6200;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .cartao-moeda h3 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+            
+            .cartao-moeda p {
+                font-size: 16px;
+                margin-bottom: 15px;
+                line-height: 1.5;
+            }
+            
+            .cartao-moeda a {
+                color: #ff6200;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 18px;
+            }
+            
+            .container-moedas {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+            .cartao-moeda {
+                background-color: hwb(0 98% 0%);
+                color: #000000;
+                width: 250px;
+                padding: 20px;
+                margin-right: 10px;
+                display: block;
+                min-width: 50%;
+                border-radius: 16px;
+                text-align: center;
+                box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                align-items: center;
+                flex-shrink: 0; /* Evita que os cartões encolham */
+            }
+            button {
+                background-color: #ff6200;
+                color: white;
+                border: none;
+                padding: 10px;
+                font-size: 18px;
+                border-radius: 50%;
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+            
+            .btn-prev {
+                left: 10px;
+            }
+            
+            .btn-next {
+                right: 10px;
+            }
+            
+            button:hover {
+                background-color: #e55e00;
+            }
+            .carrossel {
+                display: flex;
+                overflow: hidden;
+            }
+            /* Imagem da moeda no cartão */
+            .cartao-moeda img {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 20px;
+            }
+
+            /* Título da moeda no cartão */
+            .cartao-moeda h3 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            /* Descrição da moeda no cartão */
+            .cartao-moeda p {
+                font-size: 16px;
+                margin-bottom: 15px;
+                line-height: 1.5;
+            }
+
+            /* Link no cartão de moeda */
+            .cartao-moeda a {
+                color: #ff6200;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 18px;
+
+            }
+
+            /* Efeitos de animação */
+            @keyframes slideInRight {
+                0% { transform: translateX(100%); opacity: 0; }
+                100% { transform: translateX(0); opacity: 1; }
+            }
+
+            @keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            @keyframes fadeInUp {
+                0% { opacity: 0; transform: translateY(50px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+
+            @keyframes slideInUp {
+                0% { transform: translateY(50px); opacity: 0; }
+                100% { transform: translateY(0); opacity: 1; }
+            }
+
+            /* Cabeçalho de benefícios */
+            .cabecalho-beneficios {
+                display: flex;
+                justify-content: flex-start; /* Alinha o título à esquerda */
+                align-items: flex-start;
+                text-align: left; /* Alinha o texto à esquerda */
+                margin-left: 100px; /* Ajusta o espaçamento à esquerda */
+            }
+
+            /* Título da parte inferior */
+            .parte-inferior h1 {
+                font-size: 45px;
+                font-weight: bold;
+                color: #ff6200;
+                margin-bottom: 20px;
+                line-height: 1.2; /* Ajuste para deixar o título com uma linha mais próxima */
+                white-space: nowrap; /* Evita quebra de linha no título */
+            }
+
+            /* Ajustando a caixa de benefícios */
+            .container-beneficios {
+                display: flex;
+                gap: 20px;
+                margin-left: 90px; /* Ajusta a margem para os quadrados */
+            }
+
+    .caixa-beneficio {
+        width: 250px; /* Largura do quadrado */
+        background-color: #faf5f5;
+        color: #000000;
+        padding: 15px 20px; /* Padding ajustado para um melhor encaixe do texto */
+        border-radius: 20px;
+        box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
+        animation: slideInUp 1s ease-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Alinha o conteúdo para o topo */
+        align-items: center;
+        text-align: center;
+        min-height: auto; /* Ajuste a altura para ser automática e se adaptar ao conteúdo */
+        border: 2px solid #000000;
+        overflow: visible; /* Permite que o texto ultrapasse a área sem ser cortado */
+    }
+
+    /* Título do benefício */
+    .caixa-beneficio h4 {
+        margin: 0;
+        text-align: center;
+        word-wrap: break-word;
+        line-height: 1.5;
+        font-size: 20px;
+        height: auto; /* Ajusta a altura para o título não ficar muito grande */
+        overflow: visible; /* Permite que o texto do título seja exibido completamente */
+    }
+
+    /* Descrição do benefício */
+    .caixa-beneficio p {
+        margin: 0;
+        text-align: center;
+        word-wrap: break-word;
+        line-height: 1.5;
+        font-size: 16px;
+        height: auto; /* Ajusta a altura da descrição */
+        overflow: visible; /* Permite que a descrição seja exibida completamente */
+    }
+
+
+            /* Barra de rolagem personalizada */
+            .barra-lateral::-webkit-scrollbar {
+                width: 8px; /* Largura da barra de rolagem */
+            }
+
+            .barra-lateral::-webkit-scrollbar-thumb {
+                background-color: #ff6200; /* Cor do polegar da barra de rolagem */
+                border-radius: 10px; /* Cantos arredondados */
+            }
+
+            .barra-lateral::-webkit-scrollbar-track {
+                background-color: #333; /* Cor da trilha da barra de rolagem */
+                border-radius: 10px; /* Cantos arredondados */
+            }
+
+            /* Adicionando transições nos links da barra lateral */
+            .barra-lateral ul li a {
+                transition: opacity 0.6s ease;
+            }
+
+            /* Transição nos ícones */
+            .barra-lateral ul li i {
+                transition: transform 0.4s ease-in-out;
+            }
+
+            .barra-lateral ul li:hover i {
+                transform: rotate(360deg);
+            }

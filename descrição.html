@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Investimentos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: #eaeaea;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(36, 36, 55, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            width: 600px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #f7c957;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        select {
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(30, 30, 50, 0.9);
+            color: #ffffff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: border-color 0.3s, transform 0.2s;
+        }
+
+        select:focus {
+            border-color: #f7c957;
+            outline: none;
+            transform: scale(1.02);
+        }
+
+        #relatorio {
+            margin-top: 25px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            background: rgba(45, 45, 65, 0.9);
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #relatorio p {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: #f7c957;
+        }
+
+        canvas {
+            margin-top: 25px;
+            background: rgba(36, 36, 55, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Cenários econômicos</h1>
+        <div>
+            <label for="cenario">Escolha o Cenário Econômico</label>
+            <select id="cenario">
+                <option value="alta_inflacao">Alta Inflação</option>
+                <option value="recessao">Recessão</option>
+                <option value="crescimento">Crescimento Econômico</option>
+            </select>
+        </div>
+        <div id="relatorio">
+            <h2>Relatório de Simulação</h2>
+            <canvas id="graficoInvestimento"></canvas>
+            <div id="detalhesRelatorio"></div>
+        </div>
+    </div>
+    <script>
+        const detalhesCenarios = {
+            alta_inflacao: {
+                descricao: "Investimentos em renda fixa tendem a performar melhor devido à estabilidade proporcionada por ativos atrelados à inflação, como títulos do Tesouro IPCA+. No entanto, ações podem enfrentar volatilidade significativa devido à incerteza econômica e à pressão sobre os custos das empresas.",
+                retornos: [2, 4, 3, 5, 6]
+            },
+            recessao: {
+                descricao: "Durante uma recessão econômica, ações defensivas, como as de setores essenciais (alimentação, saúde), e títulos de renda fixa geralmente oferecem maior segurança. Ativos de maior risco, como ações de crescimento, podem sofrer quedas significativas devido à redução da atividade econômica e à diminuição do apetite por risco por parte dos investidores.",
+                retornos: [-1, -2, 1, 2, 3]
+            },
+            crescimento: {
+                descricao: "Em cenários de crescimento econômico acelerado, ações de empresas com bom desempenho tendem a prosperar devido ao aumento dos lucros e do consumo. No entanto, a renda fixa pode apresentar retornos inferiores em comparação às ações, especialmente se houver expectativas de elevação das taxas de juros para controlar a inflação.",
+                retornos: [5, 6, 7, 8, 10]
+            }
+        };
+
+        const ctx = document.getElementById('graficoInvestimento').getContext('2d');
+        let grafico = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Ano 1', 'Ano 2', 'Ano 3', 'Ano 4', 'Ano 5'],
+                datasets: [{
+                    label: 'Crescimento do Investimento (%)',
+                    data: [],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                interaction: {
+                    mode: 'nearest',
+                    axis: 'x',
+                    intersect: false
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Anos'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Retornos (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        document.getElementById('cenario').addEventListener('change', (event) => {
+            const cenarioSelecionado = event.target.value;
+            const detalhes = detalhesCenarios[cenarioSelecionado];
+
+            grafico.data.datasets[0].data = detalhes.retornos;
+            grafico.update();
+
+            document.getElementById('detalhesRelatorio').innerHTML = `
+                <p><strong>Cenário:</strong> ${event.target.options[event.target.selectedIndex].text}</p>
+                <p><strong>Descrição:</strong> ${detalhes.descricao}</p>
+                <p><strong>Retornos Projetados:</strong> ${detalhes.retornos.join('% | ')}%</p>
+            `;
+        });
+
+        document.getElementById('cenario').dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>

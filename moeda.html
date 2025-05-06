@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moeda</title>
+    <link rel="stylesheet" href="moeda.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Conversor de Moeda</h1>
+            <p>Veja a taxa de câmbio das principais moedas em relação ao Real (BRL)</p>
+        </header>
+
+        <table id="tabelaMoeda">
+            <thead>
+                <tr>
+                    <th onclick="ordenarTabela(0)">Moeda</th>
+                    <th onclick="ordenarTabela(1)">País</th>
+                    <th onclick="ordenarTabela(2)">Taxa de Câmbio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As linhas serão inseridas dinamicamente pelo JS -->
+            </tbody>
+        </table>
+
+        <footer>
+            <span>Última atualização: <span id="ultimaAtualizacao"></span></span>
+            <p><a href="#">Voltar ao topo</a></p>
+        </footer>
+    </div>
+
+    <script src="moeda.js"></script>
+</body>
+</html>

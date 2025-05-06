@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Tesouro Selic</title>
+    <link rel="stylesheet" href="selic.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simulador Tesouro Selic</h1>
+        <form id="formTesouro">
+            <label for="valorInicial">Valor Inicial (R$):</label>
+            <input type="number" id="valorInicial" placeholder="Ex: 1000" required>
+
+            <label for="valorMensal">Aporte Mensal (R$):</label>
+            <input type="number" id="valorMensal" placeholder="Ex: 200" required>
+
+            <label for="taxaSelic">Taxa Selic Anual (%):</label>
+            <input type="number" id="taxaSelic" value="13.75" required>
+
+            <label for="tempo">Período (em meses):</label>
+            <input type="number" id="tempo" placeholder="Ex: 12" required>
+
+            <button type="button" id="calcular">Calcular</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+    <script src="selic.js"></script>
+</body>
+</html>

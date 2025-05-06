@@ -1,0 +1,150 @@
+:root {
+    --color-primary-1: #010525; 
+    --color-primary-2: #010525; 
+    --color-primary-3: #ff6200; 
+    --color-primary-4: #ff6200;
+    --color-primary-5: #000f31;
+    --color-primary-6: #ff6200;
+    --color-neutral-0: #e9a209;
+    --color-neutral-1: #000f31;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #010525; 
+    color: #333; 
+    padding: 20px;
+}
+
+.questionnaire-container {
+    background-color: #000f31; 
+    border-radius: 10px;
+    padding: 50px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 12px 6px rgba(255, 119, 0, 0.808);
+
+}
+
+h1 {
+    color: #fff;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.question-container {
+    background-color: #000f31;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center ;
+    margin-bottom: 20px;
+}
+
+.question-container h2 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.option-btn {
+    background-color: var(--color-primary-2);
+    color: #fff;
+    border: 2px solid var(--color-primary-3);
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-btn:hover {
+    background-color: var(--color-primary-3);
+}
+
+.option-btn.selected {
+    background-color: var(--color-primary-3); 
+    border-color: #000f31;
+}
+
+.submit-btn {
+    background-color: var(--color-primary-3);
+    color: #fff;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 40%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;         
+    margin: 20px auto;     
+    text-align: center;     
+}
+.submit-btn:hover {
+    background-color: var(--color-primary-4);
+}
+
+.btn-sair {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #007bff; 
+    transition: color 0.3s ease;
+}
+
+
+.btn-voltar {
+    font-size: 18px;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #ff6200;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 12px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-voltar:hover {
+    background-color: #f26208;
+    color: white;
+}
+
+li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+.result-container {
+    font-size: 20px; /* Aumenta o tamanho da fonte */
+    color: #fff; /* Cor branca */
+    background-color: #000f31; /* Cor de fundo escura */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(255, 119, 0, 0.8); /* Sombra sutil */
+}
+.logo-container {
+    margin-top: -70px;
+    margin-bottom: -25px;
+    text-align: center;
+}
+
+.logo {
+    max-width: 170px;
+    height: auto;
+}

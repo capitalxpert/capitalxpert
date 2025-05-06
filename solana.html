@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Investimento em Solana</title>
+    <link rel="stylesheet" href="solana.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simulador de Investimento em Solana</h1>
+        <form id="formularioSolana">
+            <p id="precoSolana">Buscando preço atual da Solana...</p>
+
+            <label for="investimentoInicial">Investimento Inicial (R$):</label>
+            <input type="number" id="investimentoInicial" placeholder="Ex: 1000" required>
+
+            <label for="aporteMensal">Aporte Mensal (R$):</label>
+            <input type="number" id="aporteMensal" placeholder="Ex: 200" required>
+
+            <label for="periodoInvestimento">Período (em meses):</label>
+            <input type="number" id="periodoInvestimento" placeholder="Ex: 12" required>
+
+            <button type="button" id="calcular">Calcular</button>
+        </form>
+
+        <div id="resultado"></div>
+
+        <h2>Histórico de Preços da Solana</h2>
+        <label for="periodoHistorico">Escolha o período:</label>
+        <select id="periodoHistorico">
+            <option value="1">Último dia</option>
+            <option value="7">Últimos 7 dias</option>
+            <option value="30" selected>Últimos 30 dias</option>
+            <option value="90">Últimos 90 dias</option>
+            <option value="365">Últimos 365 dias</option>
+        </select>
+        <button id="atualizarGrafico">Atualizar Gráfico</button>
+        <canvas id="graficoPrecos"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="solana.js"></script>
+</body>
+</html>

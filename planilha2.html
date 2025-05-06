@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos</title>
+    <link rel="stylesheet" href="planilha.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+.btn-voltar {
+    text-align: right;
+    margin: -1200px 20px 0 100px;
+    font-size: 18px;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #ff6200;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 12px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-voltar:hover {
+    background-color: #f26208;
+    color: white;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">Controle de Gastos</h2>
+        
+        <!-- Seção de Salário e Aporte -->
+        <div class="section">
+            <label for="salario">Salário:</label>
+            <input type="number" id="salario" placeholder="Digite seu salário">
+            <button onclick="definirSalario()">Definir Salário</button>
+            
+            <label for="aporte">Aporte de Salário:</label>
+            <input type="number" id="aporte" placeholder="Digite o valor do aporte">
+            <button onclick="adicionarAporte()">Adicionar Aporte</button>
+        </div>
+
+        <!-- Seção de Adicionar Gasto -->
+        <div class="section">
+            <h3 style="text-align: center;">Adicionar Gasto</h3>
+            <input type="text" id="descricao" placeholder="Descrição do gasto">
+            <input type="number" id="valor" placeholder="Valor do gasto">
+            <select id="categoria">
+                <option value="Alimentação">Alimentação</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Lazer">Lazer</option>
+                <option value="Saúde">Saúde</option>
+                <option value="Outros">Outros</option>
+            </select>
+            <button onclick="adicionarGasto()">Adicionar</button>
+        </div>
+
+        <!-- Lista de Gastos -->
+        <div class="section">
+            <h3 style="text-align: center;">Gastos</h3>
+            <ul id="lista-gastos" class="gastos-list"></ul>
+        </div>
+
+        <!-- Saldo e Progresso -->
+        <div class="section">
+            <p class="saldo" id="saldo-restante">Saldo restante: R$ 0,00</p>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p class="percent" id="percent-salario">0% do salário utilizado</p>
+        </div>
+
+        <!-- Gráficos -->
+        <div class="graficos">
+            <div class="grafico-container">
+                <h3 style="text-align: center;">Gráfico de Gastos</h3>
+                <canvas id="graficoGastos"></canvas>
+            </div>
+            <div class="grafico-container">
+                <h3 style="text-align: center;">Gráfico de Gastos</h3>
+                <canvas id="graficoCategorias"></canvas>
+            </div>
+        </div>
+    </div>
+    <a href="pagdecripto2.php" class="btn-voltar">Voltar</a>
+    <script src="planilha.js"></script>
+</body>
+</html>
